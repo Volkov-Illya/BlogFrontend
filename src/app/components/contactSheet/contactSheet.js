@@ -3,6 +3,5 @@
 //   angular.module('tutFrontend').controller('ContactSheetController', ContactSheetController);
 //
 //
-
 // })();
 
