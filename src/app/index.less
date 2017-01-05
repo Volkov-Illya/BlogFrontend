@@ -1,0 +1,281 @@
+/**
+ *  Do not remove the comments below. It's the markers used by wiredep to inject
+ *  less dependencies when defined in the bower.json of your dependencies
+ */
+// bower:less
+// endbower
+
+@import url(//fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:400,700,700italic,400italic);
+
+@import url(//fonts.googleapis.com/css?family=Open+Sans:300i);
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.eot); /* For IE6-8 */
+  src: local('Material Icons'),
+       local('MaterialIcons-Regular'),
+       url(../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.woff2) format('woff2'),
+       url(../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.woff) format('woff'),
+       url(../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.ttf) format('truetype');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+html {
+  font-family: 'Roboto Slab', serif;
+}
+
+[layout=row] {
+  flex-direction: row;
+
+}
+
+
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+md-toolbar.md-default-theme {
+  background-color: black;
+}
+
+section.jumbotron {
+  margin-bottom: 30px;
+  padding: 1px 30px;
+  background-color: #5aadbb;
+  text-align: center;
+
+  color: white;
+
+  h1 {
+    font-size: 3em;
+  }
+}
+
+.techs {
+  display: flex;
+  flex-flow: row wrap;
+
+  md-card {
+    width: 30%;
+
+    img.pull-right {
+      float: right;
+      width: 100px;
+    }
+  }
+}
+
+/**
+ *  Do not remove the comments below. It's the markers used by gulp-inject to inject
+ *  all your less files automatically
+ */
+// injector
+// endinjector
+
+
+html, body {
+  font-family: "open_sansregular","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:16px;
+
+  height:100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+/** Enabled Step 3... */
+
+md-toolbar {
+  justify-content: center;
+  background: #2d313a!important;
+
+
+}
+
+md-toolbar h3 {
+  margin: auto;
+  font-weight: 500;
+}
+
+md-list-item > button {
+  width:100%;
+  //text-align:left !important;
+  background: #fafbfb;
+}
+
+#content  {
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 5px;
+  height: 100%;
+  text-align: justify;
+}
+
+md-content{
+overflow: visible;
+}
+#content .md-button.share {
+  background-color: transparent;
+  border: none;
+  width: 48px;
+  height: 48px;
+  margin: 8px auto 16px 0;
+  position: absolute;
+  //top: 10px;
+  right: 25px;
+}
+
+#content .md-button.share > md-icon {
+  fill:black;
+  width:36px;
+  height:36px;
+}
+
+.avatar {
+  position: relative;
+  width: 128px;
+  height: 128px;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  display: inline-block;
+  overflow: hidden;
+  margin: 0px;
+  vertical-align: middle;
+  zoom:0.70;
+  transform: translateZ(0);
+  -webkit-transform: scale(0.70);
+  -moz-transform:scale(0.70);
+}
+
+.selected {
+  background-color: #7b8a8e;
+}
+
+.menu {
+  background-color: transparent;
+  border: none;
+  height: 38px;
+  margin: 16px;
+  width: 36px;
+}
+
+
+
+md-list-item{
+  height: 100%;
+}
+md-list.center-height{
+  height: 100%;
+  width: 75%;
+  margin-left: 13%;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+
+}
+
+
+md-list  {
+padding: 0 ;
+}
+span.name {
+  font-weight: bold;
+  font-size:1.1em;
+  padding-left:5px;
+}
+
+#parent{
+display: flex;
+
+}
+
+.button-menu{
+  flex-grow: 1;
+}
+.title-menu{
+  flex-grow: 1.5;
+}
+.center-side{
+  flex-grow: 15;
+  width: 20%;
+  background: #fafbfb;
+}
+.right-side{
+  flex-grow: 2;
+}
+
+.title{
+  //font-family: "Cormorant Garamond", georgia,sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 40px;
+  text-align: center;
+  color: #384455;
+  margin: 0 0 32px 0;
+}
+.title .post__meta{
+  text-align: center;
+}
+.post__meta__divider{
+  height: 1px;
+  background-color: #f3f3f3;
+  width: 100%;
+  margin-top: -10px;
+  margin-bottom: 39px;
+}
+.post__meta{
+  text-align: center!important;
+  font-size: 16px;
+  color: #b1b1b1;
+  font-style: italic;
+  position: relative;
+  background-color: white;
+  padding: 0 10px;
+}
+.post-single{
+  border-bottom: 1px solid #e7e5e5;
+  padding-bottom: 47px;
+  margin: 48px 0;
+  text-align: center;
+}
+.post__button {
+  text-align: center;
+  margin: 25px 0 0;
+}
+.button {
+  text-decoration: none;
+  display: inline-block;
+  font-family: "open_sanssemibold","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #b1b1b1;
+  border: 1px solid rgba(0,0,0,0.15);
+  padding: 13px 23px 13px 26px;
+  border-radius: 26px;
+}
