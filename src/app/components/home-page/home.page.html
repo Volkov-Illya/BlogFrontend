@@ -1,0 +1,112 @@
+<div layout="column" id="parent" ng-cloak>
+
+
+  <md-toolbar layout="row">
+    <a id="top"></a>
+    <div class="button-menu">
+      <md-button class="menu" hide-gt-lg ng-click="home.toggleList()" aria-label="Show User List">
+        <md-icon md-svg-icon="./assets/images/menu.svg"></md-icon>
+      </md-button>
+      <md-button ng-click="home.goMain()" aria-label="Show Main Page">
+        Main
+      </md-button>
+    </div>
+    <div class="title-menu">
+      <h1>Angular Material - Blog</h1>
+    </div>
+    <div create-post></div>
+    <div sign-up-button></div>
+
+    <div sign-in-button></div>
+
+
+  </md-toolbar>
+
+  <!-- Wireframe Container #2 -->
+  <div flex layout="row">
+    <!-- Wireframe Container #3 -->
+    <md-sidenav ng-click="home.toggleList()" md-is-open-closed="$mdMedia('gt-sm')" md-component-id="left"
+                class="md-whiteframe-z2">
+      <md-list>
+        <md-list-item ng-repeat="user in home.users">
+          <md-button ng-click="home.selectUser(user)" ng-class="{'selected' : user === home.selected }">
+            <!--<md-icon md-svg-icon="{{user.avatar}}" class="avatar"></md-icon>-->
+            {{user.firstName}}&nbsp{{user.lastName}}
+          </md-button>
+        </md-list-item>
+      </md-list>
+    </md-sidenav>
+
+    <div class="center-side">
+      <div class="action-bar">
+        <form class="search">
+          <input placeholder="Filter..." ng-model='home.query' placeholder=' ' type='text'>
+          <ul ng-show='home.query'>
+            <li ng-cloak ng-click='home.select(item)' ng-repeat='item in home.lastPosts | filter: home.query '>
+              {{item.title}}
+            </li>
+          </ul>
+        </form>
+      </div>
+
+      <md-list class="center-height">
+        <md-list-item>
+          <md-content flex id="content">
+            <!--<md-icon md-svg-icon="{{home.selected.avatar}}" class="avatar"></md-icon>-->
+            <h2>{{home.selected.firstName}}&nbsp{{home.selected.lastName}}</h2>
+            <div class="post-single" ng-repeat="item in home.items | filter : post as result">
+              <h1 class="title">{{item.title}}</h1>
+              <span class="post__meta"> {{item.createdAt| date: "MMMM dd, yyyy 'at' HH:mm"}}</span>
+              <div class="post__meta__divider"></div>
+              <p>{{item.text|limitTo:250}}...</p>
+              <div class="post__button">
+                <md-button class="button" aria-label="Show User Post" ng-click="home.showAdvanced(item)">READ MORE
+                </md-button>
+              </div>
+            </div>
+
+            <div class="container">
+              <div class="text-center">
+                <ul class="pagination" ng-if="home.pager.pages.length">
+                  <li ng-class="{disabled:home.pager.currentPage === 1}">
+                    <a ng-click="home.setPage(1)">First</a>
+                  </li>
+                  <li ng-class="{disabled:home.pager.currentPage === 1}">
+                    <a ng-click="home.setPage(home.pager.currentPage - 1)">Previous</a>
+                  </li>
+                  <li ng-repeat="page in home.pager.pages" ng-class="{active:home.pager.currentPage === page}">
+                    <a ng-click="home.setPage(page)">{{page}}</a>
+                  </li>
+                  <li ng-class="{disabled:home.pager.currentPage === home.pager.totalPages}">
+                    <a ng-click="home.setPage(home.pager.currentPage + 1)">Next</a>
+                  </li>
+                  <li ng-class="{disabled:home.pager.currentPage === home.pager.totalPages}">
+                    <a ng-click="home.setPage(home.pager.totalPages)">Last</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <md-button aria-label="Show User Contacts" class="share" md-no-ink ng-click="home.share(home.selected)">
+              <md-icon md-svg-icon="./assets/images/share.svg"></md-icon>
+            </md-button>
+          </md-content>
+        </md-list-item>
+      </md-list>
+    </div>
+
+    <div class="right-side">
+      <md-list>
+        <md-list-item ng-repeat="user in home.users">
+          <md-button ng-click="home.selectUser(user)">
+            <md-icon md-svg-icon="{{user.avatar}}" class="avatar"></md-icon>
+            {{user.firstName}}&nbsp{{user.lastName}}
+          </md-button>
+        </md-list-item>
+      </md-list>
+    </div>
+
+
+  </div>
+</div>
+

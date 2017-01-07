@@ -11,7 +11,7 @@
       RestangularProvider.setBaseUrl(API_EP);
       var token = localStorage.getItem('jwt');
       token = JSON.parse(token);
-      RestangularProvider.setDefaultHeaders({Authorization: token});
+      RestangularProvider.setDefaultHeaders({Authorization: 'Bearer ' + token});
     });
 
   /** @ngInject */
