@@ -47,6 +47,7 @@
     }
 
     function createPost() {
+      console.log(vm.post);
       postsDaoService.createPost(vm.post)
         .then(function () {
           return vm.hide();

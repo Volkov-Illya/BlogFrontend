@@ -19,6 +19,7 @@
     vm.toggleList = toggleUsersList;
     vm.lastPosts = posts;
     vm.getUserPost = getUserPost;
+    vm.removePost = removePost;
 
 
     /**POST MODAL DIALOG**/
@@ -33,7 +34,7 @@
     };
     vm.pagination = function () {
       vm.postsLength = vm.lastPosts.length;
-      vm.dummyItems = _.range(vm.postsLength); // dummy array of items to be paged
+      vm.dummyItems = _.range(vm.postsLength);
       vm.pager = {};
       vm.setPage = setPage;
 
@@ -64,6 +65,13 @@
     };
 
     /**POST MODAL DIALOG FUNCTIONS**/
+    function removePost(id) {
+      postsDaoService.removePost(id)
+        .then(function () {
+          return vm.hide();
+        });
+    }
+
     function showAdvanced(post) {
       getUserPost(post);
       var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && vm.customFullscreen;

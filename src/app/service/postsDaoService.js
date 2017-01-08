@@ -13,7 +13,8 @@
           store.set('jwt', response.accessToken);
           var decodedToken = jwtHelper.decodeToken(response.accessToken);
           store.set('user', {
-            id: decodedToken.userId,
+
+            id: decodedToken._id,
             firstName: response.firstName,
             lastName: response.lastName
           });
@@ -78,11 +79,14 @@
       var user = store.get('user');
       return Restangular.all('posts').post({title:data.title,text:data.text,author:user.id})
         .then(function (res) {
-          console.log(res);
           return res;
         })
     }
 
+    function removePost(id) {
+      return Restangular.one('posts', id).remove();
+
+    }
 
 
     return {
@@ -94,7 +98,8 @@
       logout: logout,
       checkAuthOnRefresh: checkAuthOnRefresh,
       createUser: createUser,
-      createPost: createPost
+      createPost: createPost,
+      removePost:removePost
     }
   }
 })();
