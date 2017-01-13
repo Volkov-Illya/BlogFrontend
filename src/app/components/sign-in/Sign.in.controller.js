@@ -6,7 +6,7 @@
     .controller('SignInCtrl', SignInCtrl);
 
   /** @ngInject */
-  function SignInCtrl($state, $mdMedia, $timeout, toastr, $mdBottomSheet, $mdSidenav, $rootScope, postsDaoService, $mdDialog) {
+  function SignInCtrl($state, $mdMedia, $rootScope, postsDaoService, $mdDialog) {
     var vm = this;
 
     vm.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
@@ -52,6 +52,7 @@
           })
           .then(function () {
             vm.cleanInput(credentials);
+            $state.reload();
             return vm.hide();
           })
           .catch(function () {
@@ -71,6 +72,7 @@
 
     function logout() {
       postsDaoService.logout();
+      $state.reload();
       vm.isLogin = false;
 
     }

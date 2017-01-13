@@ -12,20 +12,8 @@
         url: '/',
         templateUrl: 'app/components/home-page/home.page.html',
         controller: 'HomeCtrl',
-        controllerAs: 'home',
-        resolve:{
-          posts:function(postsDaoService){
-            return postsDaoService.getLastUsersPosts();
-          }
-        }
+        controllerAs: 'home'
       });
-      // .state('userPosts', {
-      //   url: '/user/:id',
-      //   templateUrl: 'app/components/user-posts/user.posts.html',
-      //   controller: 'UserPostsCtrl',
-      //   controllerAs: 'vm'
-      //
-      // });
 
     $urlRouterProvider.otherwise('/');
   }

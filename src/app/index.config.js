@@ -1,13 +1,12 @@
-(function() {
+(function () {
   'use strict';
 
   angular
     .module('tutFrontend')
     .config(config)
     .config(['$qProvider', function ($qProvider) {
-    // $qProvider.errorOnUnhandledRejections(true);
-  }])
-    .config(function (RestangularProvider,  API_EP) {
+    }])
+    .config(function (RestangularProvider, API_EP) {
       RestangularProvider.setBaseUrl(API_EP);
       var token = localStorage.getItem('jwt');
       token = JSON.parse(token);

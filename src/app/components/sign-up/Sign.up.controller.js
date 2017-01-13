@@ -6,7 +6,7 @@
     .controller('SignUpCtrl', SignUpCtrl);
 
   /** @ngInject */
-  function SignUpCtrl($state, $mdMedia, $timeout, toastr, $mdBottomSheet, $mdSidenav, $rootScope, postsDaoService, $mdDialog) {
+  function SignUpCtrl($scope, $mdMedia, $rootScope, postsDaoService, $mdDialog) {
     var vm = this;
 
 
@@ -48,6 +48,7 @@
     function signup() {
       postsDaoService.createUser(vm.user)
         .then(function () {
+          $scope.$emit('create-user');
           vm.user.email = '';
           vm.user.password = '';
           return vm.hide();

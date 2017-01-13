@@ -1,7 +1,7 @@
-(function() {
+(function () {
   'use strict';
 
   angular
-    .module('tutFrontend', ['ngConstants','restangular', 'ui.router','ngMessages', 'ngMaterial', 'toastr', 'ngAnimate', 'angular-storage','angular-jwt','ui.bootstrap']);
+    .module('tutFrontend', ['ngConstants', 'restangular', 'ui.router', 'ngMessages', 'ngMaterial', 'toastr', 'ngAnimate', 'angular-storage', 'angular-jwt', 'ui.bootstrap']);
 
 })();

@@ -50,6 +50,7 @@ html {
 
 [layout=row] {
   flex-direction: row;
+  background: #f1f4f5;
 
 }
 
@@ -291,6 +292,7 @@ span.name {
 
 .title-menu {
   flex-grow: 1.5;
+  margin-top: -4px;
 }
 
 .center-side {
@@ -303,6 +305,11 @@ span.name {
 .right-side {
   flex-grow: 2;
   width: 20%;
+  -webkit-box-flex: 2;
+  margin-top: 102px;
+  background-color: rgb(250,250,250);
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 
 }
 
@@ -410,6 +417,21 @@ span.name {
   color: #b1b1b1;
 }
 
+.r-side-user {
+  display: inline-block;
+  text-align: left;
+  text-overflow: ellipsis;
+  width:130px;
+  overflow: hidden;
+  vertical-align: middle;
+}
+
 [ng\:cloak], [ng-cloack], .ng-cloak{
   display: none;
 }
+
+md-sidenav{
+  top:95px;
+  background-color: #fafafa;
+}
+

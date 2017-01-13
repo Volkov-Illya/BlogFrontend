@@ -20,7 +20,7 @@
                  name="Title"
                  md-autofocus
                  ng-model="vm.post.title"
-                 ng-minlength="10"
+                 ng-minlength="3"
                  md-maxlength="255"
                  ng-pattern="/^[a-zA-Z0-9\s\.\#\/]+$/"
                  required/>
@@ -31,10 +31,10 @@
           <textarea type="text"
                     name="Text"
                     ng-model="vm.post.text"
-                    ng-minlength="10"
+                    ng-minlength="5"
                     md-maxlength="100000"
                     rows="5"
-                    ng-pattern="/^[a-zA-Z0-9\s\.\#\/]+$/"
+                    ng-pattern="/^[a-zA-Z0-9\s\.\,\#\/]+$/"
                     required>
           </textarea>
         </md-input-container>

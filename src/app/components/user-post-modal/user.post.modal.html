@@ -2,10 +2,12 @@
   <form ng-cloak>
     <md-toolbar>
       <div class="md-toolbar-tools">
-        <h2>{{home.post.title}}</h2>
+        <div ng-repeat="user in home.users">
+          <h2>{{(home.post.author == user.id) ? user.firstName: null}}</h2>
+        </div>
         <span flex></span>
         <md-button class="md-icon-button" ng-click="home.cancel()">
-          <md-icon  aria-label="Close dialog">
+          <md-icon aria-label="Close dialog">
             <i class="material-icons md-18">clear</i>
           </md-icon>
         </md-button>
@@ -24,17 +26,15 @@
     </md-dialog-content>
 
     <md-dialog-actions layout="row">
-      <!--<md-button href="http://en.wikipedia.org/wiki/Mango" target="_blank" md-autofocus>-->
-        <!--More on Wikipedia-->
-      <!--</md-button>-->
+
       <span flex></span>
       <md-button aria-label="Show User Contacts" class="share" md-no-ink ng-click="home.share(home.selected)">
         <md-icon md-svg-icon="./assets/images/share.svg"></md-icon>
       </md-button>
-      <md-button ng-click="home.editPost(home.post)">
+      <md-button ng-if="(home.post.author == home.user.id)" ng-click="home.editPost(home.post)">
         Edit Post
       </md-button>
-      <md-button ng-click="home.removePost(home.post.id)">
+      <md-button ng-if="(home.post.author == home.user.id)" ng-click="home.removePost(home.post.id)">
         Remove Post
       </md-button>
     </md-dialog-actions>

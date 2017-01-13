@@ -6,7 +6,7 @@
     .controller('CreatePostCtrl', CreatePostCtrl);
 
   /** @ngInject */
-  function CreatePostCtrl($state, $mdMedia, $timeout, toastr, $mdBottomSheet, $mdSidenav, $rootScope, postsDaoService, $mdDialog) {
+  function CreatePostCtrl($scope, $mdMedia, $rootScope, postsDaoService, $mdDialog) {
     var vm = this;
 
 
@@ -47,9 +47,11 @@
     }
 
     function createPost() {
-      console.log(vm.post);
       postsDaoService.createPost(vm.post)
-        .then(function () {
+        .then(function (res) {
+          $scope.$emit('create-post');
+          vm.post.title = '';
+          vm.post.text = '';
           return vm.hide();
         });
     }

@@ -77,7 +77,7 @@
 
     function createPost(data) {
       var user = store.get('user');
-      return Restangular.all('posts').post({title:data.title,text:data.text,author:user.id})
+      return Restangular.all('posts').post({title: data.title, text: data.text, author: user.id})
         .then(function (res) {
           return res;
         })
@@ -99,7 +99,7 @@
       checkAuthOnRefresh: checkAuthOnRefresh,
       createUser: createUser,
       createPost: createPost,
-      removePost:removePost
+      removePost: removePost
     }
   }
 })();

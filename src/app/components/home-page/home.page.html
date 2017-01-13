@@ -7,7 +7,7 @@
       <md-button class="menu" hide-gt-lg ng-click="home.toggleList()" aria-label="Show User List">
         <md-icon md-svg-icon="./assets/images/menu.svg"></md-icon>
       </md-button>
-      <md-button ng-click="home.goMain()" aria-label="Show Main Page">
+      <md-button ng-click="home.goMain()" aria-label="Show Main Page ">
         Main
       </md-button>
     </div>
@@ -40,7 +40,7 @@
     <div class="center-side">
       <div class="action-bar">
         <form class="search">
-          <input placeholder="Filter..." ng-model='home.query' placeholder=' ' type='text'>
+          <input placeholder="Search post" ng-model='home.query' placeholder=' ' type='text'>
           <ul ng-show='home.query'>
             <li ng-cloak ng-click='home.select(item)' ng-repeat='item in home.lastPosts | filter: home.query '>
               {{item.title}}
@@ -53,10 +53,15 @@
         <md-list-item>
           <md-content flex id="content">
             <!--<md-icon md-svg-icon="{{home.selected.avatar}}" class="avatar"></md-icon>-->
-            <h2>{{home.selected.firstName}}&nbsp{{home.selected.lastName}}</h2>
-            <div class="post-single" ng-repeat="item in home.items | filter : post as result">
+            <!--<h2>{{home.selected.firstName}}&nbsp{{home.selected.lastName}}</h2>-->
+
+            <div class="post-single" ng-repeat="item in home.items | filter : post as result" >
               <h1 class="title">{{item.title}}</h1>
-              <span class="post__meta"> {{item.createdAt| date: "MMMM dd, yyyy 'at' HH:mm"}}</span>
+              <div ng-repeat="user in home.users">
+                 <p> {{(item.author == user.id)? ("Author: " + user.firstName): null}}</p>
+              </div>
+              <span class="post__meta"> {{item.createdAt| date: "MMMM dd, yyyy 'at' HH:mm"}} </span>
+
               <div class="post__meta__divider"></div>
               <p>{{item.text|limitTo:250}}...</p>
               <div class="post__button">
@@ -100,7 +105,7 @@
         <md-list-item ng-repeat="user in home.users">
           <md-button ng-click="home.selectUser(user)">
             <md-icon md-svg-icon="{{user.avatar}}" class="avatar"></md-icon>
-            {{user.firstName}}&nbsp{{user.lastName}}
+            <div class="r-side-user">{{user.firstName}}&nbsp{{user.lastName}}</div>
           </md-button>
         </md-list-item>
       </md-list>

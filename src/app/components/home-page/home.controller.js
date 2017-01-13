@@ -7,7 +7,7 @@
 
 
   /** @ngInject */
-  function HomeCtrl($state, posts, $mdMedia, $timeout, toastr, $mdBottomSheet, $mdSidenav, $rootScope, postsDaoService, $mdDialog, PagerService, $anchorScroll, $location, $filter) {
+  function HomeCtrl($state, $mdMedia, $scope, store, $mdBottomSheet, $mdSidenav,  postsDaoService, $mdDialog, PagerService, $anchorScroll ) {
     var vm = this;
 
 
@@ -17,10 +17,10 @@
     vm.selectUser = selectUser;
     vm.users = getUserList();
     vm.toggleList = toggleUsersList;
-    vm.lastPosts = posts;
+    vm.lastPosts = getLastUsersPosts();
     vm.getUserPost = getUserPost;
     vm.removePost = removePost;
-
+    vm.user = store.get('user');
 
     /**POST MODAL DIALOG**/
     vm.showAdvanced = showAdvanced;
@@ -53,7 +53,6 @@
         vm.scroll();
       }
     };
-    vm.pagination();
 
 
     /**SEARCH INPUT**/
@@ -68,7 +67,9 @@
     function removePost(id) {
       postsDaoService.removePost(id)
         .then(function () {
+          getLastUsersPosts();
           return vm.hide();
+
         });
     }
 
@@ -114,10 +115,12 @@
     }
 
     function goMain() {
-      vm.lastPosts = posts;
+      vm.lastPosts;
       $state.go('home');
       vm.pagination();
       getLastUsersPosts();
+      vm.selected = '';
+
 
     }
 
@@ -141,7 +144,7 @@
       $mdBottomSheet.show({
         controllerAs: "vm",
         controller: ['$mdBottomSheet', ContactSheetController],
-        templateUrl: './app/components/contactSheet/contactSheet.html',
+        templateUrl: './app/components/contact-sheet/contact.sheet.html',
         parent: angular.element(document.getElementById('content'))
       });
 
@@ -169,6 +172,7 @@
         });
     }
 
+
     function getUserPosts(user) {
       postsDaoService.getUserPosts(user)
         .then(function (result) {
@@ -181,9 +185,18 @@
       postsDaoService.getLastUsersPosts()
         .then(function (result) {
           vm.lastPosts = result;
-          console.log(vm.lastPosts);
+          vm.pagination();
+
         })
     }
+
+
+    $scope.$on('create-post', function() {
+      getLastUsersPosts();
+    });
+    $scope.$on('create-user', function() {
+      getUserList();
+    });
 
   }
 

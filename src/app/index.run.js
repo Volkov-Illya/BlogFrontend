@@ -1,4 +1,4 @@
-(function() {
+(function () {
   'use strict';
 
   angular
@@ -6,8 +6,6 @@
     .run(runBlock);
 
   /** @ngInject */
-  function runBlock($log,authManager, $rootScope, postsDaoService, $state) {
+  function runBlock($log, authManager, $rootScope, postsDaoService, $state) {
   }
-
-
 })();
