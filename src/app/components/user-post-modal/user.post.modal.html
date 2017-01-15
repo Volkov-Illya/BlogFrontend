@@ -1,4 +1,4 @@
-<md-dialog aria-label="Post Title">
+<md-dialog  aria-label="Post Title">
   <form ng-cloak>
     <md-toolbar>
       <div class="md-toolbar-tools">
@@ -31,9 +31,10 @@
       <md-button aria-label="Show User Contacts" class="share" md-no-ink ng-click="home.share(home.selected)">
         <md-icon md-svg-icon="./assets/images/share.svg"></md-icon>
       </md-button>
-      <md-button ng-if="(home.post.author == home.user.id)" ng-click="home.editPost(home.post)">
-        Edit Post
-      </md-button>
+      <!--<md-button ng-if="(home.post.author == home.user.id)" ng-click="home.editPost(home.post)">-->
+        <!--Edit Post-->
+      <!--</md-button>-->
+      <edit-post></edit-post>
       <md-button ng-if="(home.post.author == home.user.id)" ng-click="home.removePost(home.post.id)">
         Remove Post
       </md-button>

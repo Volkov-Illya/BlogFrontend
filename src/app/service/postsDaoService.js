@@ -83,6 +83,13 @@
         })
     }
 
+    function editPost(data, id) {
+      return Restangular.one('posts', id).customPUT({title: data.title, text: data.text})
+        .then(function (res) {
+          return res;
+        })
+    }
+
     function removePost(id) {
       return Restangular.one('posts', id).remove();
 
@@ -99,7 +106,8 @@
       checkAuthOnRefresh: checkAuthOnRefresh,
       createUser: createUser,
       createPost: createPost,
-      removePost: removePost
+      removePost: removePost,
+      editPost: editPost
     }
   }
 })();

@@ -197,7 +197,10 @@
     $scope.$on('create-user', function() {
       getUserList();
     });
-
+    $scope.$on('update-post', function() {
+      console.log('edit');
+      getLastUsersPosts();
+    });
   }
 
 })();
